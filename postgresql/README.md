@@ -12,6 +12,7 @@ Ce dossier contient une base de données PostgreSQL prête à être utilisée da
 Dans le terminal intégré de Codespaces :
 
 ```bash
+cd postgresql/
 docker-compose up -d
 ```
 
