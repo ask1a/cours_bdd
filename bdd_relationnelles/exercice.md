@@ -63,3 +63,36 @@ Table auteur {
 - Un schéma relationnel clair avec les entités, attributs, clés et relations.
 - Une capture ou export du schéma depuis dbdiagram.io.
 - Une brève justification des choix de modélisation (relations, contraintes, etc.).
+- Créer les tables dans postgres dans une nouvelle base de donnée bibliothèque
+
+
+## Créer la base
+Depuis psql (ou via docker exec si tu es dans un container) :
+
+```sql
+CREATE DATABASE bibliotheque;
+```
+-> Ici la base se nomme bibliotheque
+
+## Se connecter à la base
+Toujours dans psql :
+
+```bash
+\c bibliotheque
+```
+ou en ligne de commande :
+
+```bash
+psql -h localhost -U postgres -d bibliotheque
+```
+## Créer les tables
+Une fois connecté à la nouvelle base, exécuter le script :
+
+```sql
+-- Table Auteur
+CREATE TABLE auteur (
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    nationalite VARCHAR(100)
+);
+```
