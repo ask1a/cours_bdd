@@ -89,10 +89,12 @@ psql -h localhost -U postgres -d bibliotheque
 Une fois connecté à la nouvelle base, exécuter le script :
 
 ```sql
--- Table Auteur
-CREATE TABLE auteur (
+-- Table Livre
+CREATE TABLE livre (
     id SERIAL PRIMARY KEY,
-    nom VARCHAR(255) NOT NULL,
-    nationalite VARCHAR(100)
+    titre VARCHAR(255) NOT NULL,
+    annee_publication INT,
+    auteur_id INT REFERENCES auteur(id)
+        ON DELETE SET NULL
 );
 ```
