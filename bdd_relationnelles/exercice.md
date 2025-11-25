@@ -83,7 +83,7 @@ Table etudiant {
   nom varchar
   prénom varchar
   email varchar
-  departement_id int [ref: > departement.id]
+  cursus_id int [ref: > cursus.id]
 }
 
 Table cursus {
