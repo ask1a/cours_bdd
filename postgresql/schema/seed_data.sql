@@ -1,9 +1,9 @@
 -- Insertion de clients 
 INSERT INTO clients (nom, email, date_inscription) VALUES
-('Alice Dupont', 'alice.dupont@example.com', '2023-01-10'),
-('Bob Martin', 'bob.martin@example.com', '2025-02-05'),
+('Alice Dupont', 'alice.dupont@example.com', '2022-01-10'),
+('Bob Martin', NULL, '2025-02-05'),
 ('Claire Leroy', 'claire.leroy@yahoo.com', '2025-03-12'),
-('David Moreau', 'david.moreau@yahoo.com', '2023-04-20'),
+('David Moreau', NULL, '2021-04-20'),
 ('Emma Caron', 'emma.caron@example.com', '2025-05-15'),
 ('François Petit', 'francois.petit@gmail.com', '2024-02-01'),
 ('Julie Bernard', 'julie.bernard@example.com', '2025-07-18'),
