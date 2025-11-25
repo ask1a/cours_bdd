@@ -54,7 +54,7 @@ WHERE email IN ('alice@mail.com', 'bob@mail.com');
  - Affiche les clients dont l’email est nul.
  - Affiche les clients dont l’id est compris entre 5 et 10.
  - Affiche les clients dont le nom ne commence pas par "M".
- - Affiche les clients inscrits avant 2023 ou dont le nom contient "an".
+ - Affiche les clients inscrits avant 2023 ou dont le nom contient "ad".
  - Affiche les clients dont l’email appartient à une liste donnée (IN).
  - Affiche les clients dont la date d’inscription est comprise entre janvier et mars 2024.
  - Affiche les clients dont le nom est différent de "Dupont".
