@@ -86,6 +86,39 @@ Système de gestion de base de données (SGBD) : logiciel qui crée, lit, met à
 
 ---
 
+## Les 4 propriétés ACID
+### 1. Atomicité (All-or-Nothing)
+Principe : Une transaction est indivisible. Soit toutes les opérations réussissent, soit aucune n’est appliquée.
+
+Exemple : Transfert de 100 € du compte A vers le compte B.
+Débit de A (-100 €)
+Crédit de B (+100 €)  
+
+Si le débit réussit mais que le crédit échoue, la transaction est annulée et A retrouve son solde initial.
+
+### 2. Cohérence (Consistency)
+Principe : Une transaction doit amener la base d’un état valide à un autre, en respectant toutes les règles et contraintes.
+
+Exemple : Dans une banque, la somme totale des soldes doit rester constante.
+Avant transfert : A = 500 €, B = 200 € → Total = 700 €
+Après transfert : A = 400 €, B = 300 € → Total = 700 €
+La règle métier est respectée, la base reste cohérente.
+
+### 3. Isolation (Isolation)
+Principe : Les transactions concurrentes ne doivent pas interférer entre elles. Le résultat doit être le même que si elles étaient exécutées séquentiellement.
+
+Exemple :
+Transaction T1 : transfert de 50 € de X vers Y.
+Transaction T2 : lecture des soldes de X et Y.  
+T2 ne doit pas voir les modifications de T1 tant qu’elle n’est pas validée (évite les dirty reads, non-repeatable reads, phantom reads).
+
+### 4. Durabilité (Durability)
+Principe : Une fois validée (commit), une transaction est permanente, même en cas de panne système.
+
+Exemple : Après un virement validé, si le serveur tombe en panne, les nouvelles valeurs des comptes sont sauvegardées sur disque et restaurées au redémarrage
+
+---
+
 ## Rappel
 
 - Aucun modèle n’est universel ; le choix dépend des besoins métier, de la cohérence requise et de la scalabilité souhaitée.  
@@ -247,12 +280,12 @@ La colonne school_id dans Student est la clé étrangère qui capture la relatio
 
    Exemple :
    ```
-   ┌─────────┐      ┌────────────┐
-   │ School    │      │  Student     │
-   │ id        │      │ id           │
-   │ name      │      │ name         │
-   │ location. │      │ surname      │
-   └─────────┘      │ school_id    │
+   ┌─────────┐        ┌────────────┐
+   │ School  │        │  Student   │
+   │ id      │        │ id         │
+   │ name    │        │ name       │
+   │ location│        │ surname    │
+   └─────────┘        │ school_id  │
                       └────────────┘
    ```
 
