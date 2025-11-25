@@ -64,7 +64,7 @@ Entités principales
 Utilisez [dbdiagram.io](https://dbdiagram.io/home) — un outil gratuit et intuitif pour créer des schémas relationnels en ligne.
 
 > Vous pouvez y décrire votre modèle en pseudo-SQL comme ceci :
-```sql
+```code
 Table livre {
   id int [pk]
   titre varc`har
