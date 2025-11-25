@@ -1,15 +1,16 @@
--- Insertion de clients
-INSERT INTO clients (nom, email) VALUES
-('Alice Dupont', 'alice.dupont@example.com'),
-('Bob Martin', 'bob.martin@example.com'),
-('Claire Leroy', 'claire.leroy@yahoo.com'),
-('David Moreau', 'david.moreau@yahoo.com'),
-('Emma Caron', 'emma.caron@example.com'),
-('François Petit', 'francois.petit@gmail.com'),
-('Julie Bernard', 'julie.bernard@example.com'),
-('Karim Haddad', 'karim.haddad@example.com'),
-('Laura Fontaine', 'laura.fontaine@gmail.com'),
-('Nicolas Girard', 'nicolas.girard@example.com');
+-- Insertion de clients 
+INSERT INTO clients (nom, email, date_inscription) VALUES
+('Alice Dupont', 'alice.dupont@example.com', '2023-01-10'),
+('Bob Martin', 'bob.martin@example.com', '2025-02-05'),
+('Claire Leroy', 'claire.leroy@yahoo.com', '2025-03-12'),
+('David Moreau', 'david.moreau@yahoo.com', '2023-04-20'),
+('Emma Caron', 'emma.caron@example.com', '2025-05-15'),
+('François Petit', 'francois.petit@gmail.com', '2024-02-01'),
+('Julie Bernard', 'julie.bernard@example.com', '2025-07-18'),
+('Karim Haddad', 'karim.haddad@example.com', '2025-08-09'),
+('Laura Fontaine', 'laura.fontaine@gmail.com', '2025-09-25'),
+('Nicolas Girard', 'nicolas.girard@example.com', '2025-10-30');
+
 
 -- Insertion de produits
 INSERT INTO produits (nom, famille, categorie, prix, stock) VALUES
