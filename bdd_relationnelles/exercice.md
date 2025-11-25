@@ -67,7 +67,7 @@ Utilisez [dbdiagram.io](https://dbdiagram.io/home) — un outil gratuit et intui
 ```code
 Table livre {
   id int [pk]
-  titre varc`har
+  titre varchar
   année_publication int
   auteur_id int [ref: > auteur.id]
 }
