@@ -28,7 +28,22 @@ La normalisation améliore la qualité du modèle de données : elle rationalise
 - Règles essentielles :
   - Chaque table doit posséder une clé primaire unique (par ex. CustomerID).  
   - Chaque attribut doit contenir une valeur atomique (pas de listes ou valeurs multiples dans une même cellule).  
-- Exemple de correction : remplacer une colonne PhoneNumbers contenant plusieurs numéros par une table PhoneNumbers liée à Customer par une clé étrangère CustomerID, chaque ligne de PhoneNumbers contenant un seul numéro.  
+- Exemple :
+    Exemple non normalisé :
+    
+    ```Code
+    Client(id, nom, commandes)
+    ```
+     Ici, client peut contenir une liste de commandes (ex: "cmd1, cmd3, cmd4").
+    
+    Correction en 1NF :
+    
+    ```Code
+    Client(id, nom)
+    Commande(id_commande, id_client, date)
+    ```
+    ➡ Chaque commande est stocké dans une ligne distincte.
+  
 - Bénéfice : facilite le tri, la recherche et les jointures ; évite les opérations coûteuses d’extraction et de parsing des valeurs multi‑contenues.
 
 ---
