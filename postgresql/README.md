@@ -27,11 +27,22 @@ Cela démarre un conteneur PostgreSQL avec :
 Les fichiers SQL dans `schema/` sont automatiquement exécutés au premier démarrage.
 
 ## 3. Accéder à PostgreSQL en ligne de commande
-### Connexion
+
 ```bash
 psql -h localhost -U postgres -d ecommerce
 ```
 Mot de passe : `postgres`
+
+
+### Connexion depuis le container 
+```bash
+docker exec -it <nom_du_container> bash
+```
+### ou après avoir installé le client sur la machine
+```bash
+sudo apt install postgresql-client-16
+```
+
 
 ### Commandes utiles
 |commande|résultat|
