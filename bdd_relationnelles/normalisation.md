@@ -42,7 +42,7 @@ La normalisation améliore la qualité du modèle de données : elle rationalise
     Client(id, nom)
     Commande(id_commande, id_client, date)
     ```
-    ➡ Chaque commande est stocké dans une ligne distincte.
+    -> Chaque commande est stocké dans une ligne distincte.
   
 - Bénéfice : facilite le tri, la recherche et les jointures ; évite les opérations coûteuses d’extraction et de parsing des valeurs multi‑contenues.
 
@@ -52,15 +52,51 @@ La normalisation améliore la qualité du modèle de données : elle rationalise
 - Conditions :
   - La table doit être en 1NF ;  
   - Tous les attributs non‑clé doivent dépendre entièrement de la clé primaire (pas de dépendances partielles sur une composante d’une clé composite).  
-- Quand l'appliquer : utile surtout si la table utilise une clé primaire composite (ex. EmployeeID + DepartmentID) ; si certains attributs n’utilisent qu’une partie de la clé composite, il faut extraire ces attributs dans une table séparée pour éviter les anomalies de suppression et garantir l’intégrité des informations (ex. informations sur le département ne dépendant que de DepartmentID).  
+- Quand l'appliquer : utile surtout si la table utilise une clé primaire composite (ex. EmployeeID + DepartmentID) ; si certains attributs n’utilisent qu’une partie de la clé composite, il faut extraire ces attributs dans une table séparée pour éviter les anomalies de suppression et garantir l’intégrité des informations (ex. informations sur le département ne dépendant que de DepartmentID).
+- Exemple:
+    Exemple en 1NF mais pas en 2NF :
+
+    ```Code
+    Commande(id_commande, id_client, produit, nom_client)
+    ```
+    Ici, nom_client dépend seulement de id_client, pas de la clé complète id_commande.
+    
+    Correction en 2NF :
+    
+    ```Code
+    Client(id_client, nom_client)
+    Commande(id_commande, id_client, produit)
+    ```
+    -> On sépare les informations du client dans une table dédiée.
 - Remarque : une table qui n’a pas de clé composite et qui respecte la 1NF satisfait automatiquement à la 2NF.
 
 ---
 
 ## Troisième Forme Normale (3NF) — règles et mise en pratique
-- Conditions : la table doit être en 2NF ; aucun attribut non-clé ne doit dépendre d'un autre attribut non-clé (on évite les dépendances transitoires).  
+- Conditions :
+    - la table doit être en 2NF
+    - aucun attribut non-clé ne doit dépendre d'un autre attribut non-clé (on évite les dépendances transitoires).  
 - Conséquence pratique : si un attribut A dépend de B et B dépend de la clé primaire, déplacer A (et B si nécessaire) dans une table distincte liée par clé étrangère.  
-- Exemple type : si Project contient des attributs propres au Designer (DesignerGrade, DesignerCountry), ces attributs doivent être extraits vers une table Designer pour éviter la perte d'information et les anomalies lors de suppressions ou mises à jour.
+- Exemple :
+    - 2NF mais pas en 3NF
+    ```Code
+    Employe(id_employe, nom, id_departement, nom_departement, directeur_departement)
+    ```
+    Problème :
+    - `nom_departement` et `directeur_departement` dépendent de `id_departement`, qui est lui-même un attribut non-clé.
+    - Donc, il existe une dépendance transitive : `id_employe → id_departement → nom_departement, directeur_departement`.
+    
+    Correction en 3NF  
+    On sépare les informations du département dans une table dédiée :
+    
+    ```Code
+    Employe(id_employe, nom, id_departement)
+    Departement(id_departement, nom_departement, directeur_departement)
+    ```
+    Résultat :
+    
+    Les attributs du département ne dépendent plus de l’employé, mais uniquement de la clé primaire de la table `Departement`.
+    On évite les anomalies de mise à jour (ex. changer le nom du département dans une seule table au lieu de toutes les lignes des employés).
 
 ---
 
