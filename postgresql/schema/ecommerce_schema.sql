@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS clients CASCADE;
 CREATE TABLE clients (
     client_id SERIAL PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
-    email VARCHAR(150) UNIQUE NOT NULL,
+    email VARCHAR(150),
     date_inscription DATE DEFAULT CURRENT_DATE
 );
 
