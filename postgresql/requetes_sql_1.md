@@ -20,15 +20,15 @@ SELECT DISTINCT statut FROM commandes;
 
 # Partie 3 : Filtrer avec WHERE
 Opérateurs de conditions
-= : égal à
-<> ou != : différent de
-> / < : supérieur / inférieur
->= : supérieur ou égal
-IN : valeur dans une liste
-BETWEEN : valeur comprise dans un intervalle
-LIKE / ILIKE : recherche textuelle (sensible ou non à la casse)
-IS NULL : valeur nulle
-NOT : négation
+ - = : égal à
+ - <> ou != : différent de
+ - < / > : inférieur / supérieur
+ - <= : inférieur ou égal
+ - IN : valeur dans une liste
+ - BETWEEN : valeur comprise dans un intervalle
+ - LIKE / ILIKE : recherche textuelle (sensible ou non à la casse)
+ - IS NULL : valeur nulle
+ - NOT : négation
 
 Exemple : clients inscrits après une date
 ```sql
@@ -47,6 +47,25 @@ Exemple : clients avec email dans une liste
 SELECT * FROM clients
 WHERE email IN ('alice@mail.com', 'bob@mail.com');
 ```
+
+# Erreur de type
+Affichons les clients inscrits en 2025.
+
+```sql
+ecommerce=# SELECT * FROM clients WHERE date_inscription = 2025;
+```
+Code
+ERROR:  column "2025" does not exist
+LINE 1: SELECT * FROM clients WHERE date_inscription = 2025;
+Question : Pourquoi y-a-t il une erreur ?
+
+Ici, la colonne date_inscription est de type DATE, et la valeur 2025 est interprétée comme un identifiant de colonne (non existant) au lieu d’une valeur littérale. Pour un champ de type date, il faut entourer la valeur par ' et respecter le format attendu (YYYY-MM-DD).
+
+Exemple correct :
+```sql
+SELECT * FROM clients WHERE date_inscription = '2025-01-01';
+```
+
 
 # Questions pratiques (table clients)
  - Affiche tous les clients inscrits en 2025.
