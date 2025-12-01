@@ -60,11 +60,54 @@
 -- FROM commandes co
 -- INNER JOIN clients c ON co.client_id = c.client_id;
 
-SELECT p.nom as produit, c.nom as client
-FROM commandes co
+-- SELECT p.nom as produit, c.nom as client
+-- FROM commandes co
+-- INNER JOIN clients c ON co.client_id = c.client_id
+-- INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id
+-- INNER JOIN produits p ON lc.produit_id = p.produit_id
+-- WHERE c.nom = 'Alice Dupont';
+
+-- Prix maximum et minimum des produits 
+-- SELECT COUNT(*) AS nb_clients FROM clients;
+
+-- SELECT AVG(prix) AS prix_moyen FROM produits;
+
+-- SELECT COUNT(*) AS  nb_produits FROM produits;
+
+-- affichage du prix moyen des produits par catégorie
+
+SELECT p.categorie, AVG(prix) AS prix_moyen1 
+FROM produits p
+GROUP BY p.categorie;
+
+SELECT * FROM commandes;
+
+SELECT commande_id, SUM(quantite*prix_unitaire)
+FROM lignes_commandes
+GROUP BY commande_id;
+
+SELECT c.nom, co.client_id, COUNT(*) AS nbre_commande
+FROM commandes co 
+INNER JOIN clients c ON c.client_id = co.client_id
+GROUP BY co.client_id, c.nom
+ORDER BY nbre_commande DESC
+LIMIT 1;
+
+-- SUM DES STOCKS PAR FAMILLE
+SELECT famille, SUM(stock) as nbre_stock
+FROM produits
+GROUP BY famille;
+
+
+-- Ecart type des prix des produits
+SELECT STDDEV(prix) AS dispersion_prix 
+FROM produits;
+
+-- MONTANT TOTAL DES VENTES PAR CLIENT
+SELECT c.client_id, SUM(quantite*prix_unitaire)
+FROM lignes_commandes ls
+INNER JOIN commandes co ON co.commande_id = ls.commande_id
 INNER JOIN clients c ON co.client_id = c.client_id
-INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id
-INNER JOIN produits p ON lc.produit_id = p.produit_id
-WHERE c.nom = 'Alice Dupont';
+GROUP BY c.client_id ;
 
 
