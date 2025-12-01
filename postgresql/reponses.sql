@@ -1,0 +1,1 @@
+SELECT * FROM clients WHERE email is not NULL;
