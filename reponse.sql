@@ -1,0 +1,9 @@
+-- SELECT nom, date_inscription FROM clients WHERE date_inscription > '2025-01-01';
+-- SELECT nom, email from clients WHERE nom like '%e%';
+-- SELECT nom, email FROM clients WHERE email is NULL;
+-- SELECT client_id, nom, email FROM clients WHERE client_id >= 5 and client_id <= 10
+-- SELECT nom, email from clients WHERE nom NOT like 'M%';
+-- SELECT nom, email, date_inscription from clients WHERE date_inscription < '2023-01-01' OR nom like '%ad%';
+-- SELECT * from clients where email IN ('emma.caron@example.com' , 'karim.haddad@example.com')
+-- SELECT nom, email, date_inscription from clients WHERE date_inscription BETWEEN '2024-01-01' AND '2024-03-01';
+-- SELECT * from clients WHERE nom NOT LIKE '%Dupont%';
