@@ -1,0 +1,10 @@
+-- Affiche la liste des clients avec leurs commandes (même ceux qui n’ont pas de commande).
+-- Affiche toutes les commandes avec le nom du client et leur statut.
+-- Affiche les produits commandés par "Alice Dupont".
+-- Affiche les clients qui n’ont jamais passé de commande.
+-- Affiche toutes les commandes avec les produits associés et la quantité commandée.
+-- Affiche les clients et les produits qu’ils ont commandés, en utilisant une jointure multiple.
+-- Affiche toutes les commandes, même celles sans client (test avec FULL OUTER JOIN).
+-- Affiche toutes les combinaisons possibles entre clients et produits (CROSS JOIN).
+-- Affiche les clients qui ont commandé au moins deux produits différents.
+-- Affiche les produits qui n’ont jamais été commandés.
