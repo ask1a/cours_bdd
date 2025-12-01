@@ -11,21 +11,20 @@
 ---SELECT * FROM clients c INNER JOIN commandes o ON c.client_id = o.client_id WHERE c.nom = 'Bob Martin';
 --SELECT c.nom, c.email, co.commande_id,co.statut FROM clients c LEFT JOIN commandes co ON c.client_id = co.client_id;
 --SELECT  c.nom AS client, co.statut FROM commandes co INNER JOIN clients c ON co.client_id = c.client_id INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id INNER JOIN produits p ON lc.produit_id = p.produit_id;
---SELECT  c.nom AS client, p.nom AS produit FROM commandes co INNER JOIN clients c ON co.client_id = c.client_id INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id INNER JOIN produits p ON lc.produit_id = p.produit_id WHERE c.nom = 'Alice Dupont';
+--SELECT DISTINCT c.nom AS client, p.nom AS produit FROM commandes co INNER JOIN clients c ON co.client_id = c.client_id INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id INNER JOIN produits p ON lc.produit_id = p.produit_id WHERE c.nom = 'Alice Dupont';
 --SELECT c.nom AS client, co.commande_id FROM commandes co  INNER JOIN clients c ON co.client_id = c.client_id  INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id  INNER JOIN produits p ON lc.produit_id = p.produit_id  WHERE co.commande_id is NULL;
 --SELECT c.nom AS client, p.nom as produit, lc.quantite as qte FROM commandes co  INNER JOIN clients c ON co.client_id = c.client_id  INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id  INNER JOIN produits p ON lc.produit_id = p.produit_id;
 --SELECT c.nom, p.nom FROM clients c CROSS JOIN produits p;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+--SELECT c.nom,COUNT(c.nom)  FROM commandes co  INNER JOIN clients c ON co.client_id = c.client_id  INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id  INNER JOIN produits p ON lc.produit_id = p.produit_id GROUP BY c.nom HAVING COUNT(c.nom) >2;
+--SELECT p.produit_id,COUNT(co.commande_id)  FROM commandes co  LEFT JOIN clients c ON co.client_id = c.client_id  LEFT JOIN lignes_commandes lc ON co.commande_id = lc.commande_id  LEFT JOIN produits p ON lc.produit_id = p.produit_id GROUP BY p.produit_id;
+--[3]
+--SELECT COUNT(*) FROM produits;
+--SELECT categorie,AVG(prix) FROM produits GROUP BY categorie;
+--SELECT commande_id, prix_unitaire * quantite AS total FROM lignes_commandes;
+--SELECT c.nom,COUNT(co.commande_id) AS total_commandes FROM clients c LEFT JOIN commandes co ON c.client_id = co.client_id GROUP BY c.nom ORDER BY total_commandes DESC LIMIT 1;
+--SELECT p.famille, SUM(p.stock) AS total_stock FROM produits p GROUP BY p.famille ORDER BY total_stock DESC ;
+--SELECT p.categorie, STDDEV(p.prix) AS ecart FROM produits p GROUP BY p.categorie ORDER BY ecart DESC ;
+--SELECT c.nom, SUM(lc.prix_unitaire * lc.quantite) AS montant_total FROM clients c INNER JOIN commandes co ON c.client_id = co.client_id INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id GROUP BY c.nom ORDER BY montant_total DESC;
+--SELECT EXTRACT(YEAR FROM date_commande) AS annee,COUNT(*) AS nb_commandes FROM commandes GROUP BY annee HAVING EXTRACT(YEAR FROM date_commande) = 2025;
+--SELECT p.categorie,MIN(lc.prix_unitaire),MAX(lc.prix_unitaire),AVG(lc.prix_unitaire) FROM produits p INNER JOIN lignes_commandes lc ON p.produit_id = lc.produit_id  GROUP BY p.categorie ORDER BY montant_total DESC;
+--SELECT * from produits WHERE stock%5=0;
