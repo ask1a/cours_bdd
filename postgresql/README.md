@@ -20,7 +20,7 @@ Cela démarre un conteneur PostgreSQL avec :
 
  - Utilisateur : `postgres`
 
- - Mot de passe : `postgres`
+ - Mot de passe : ``
 
  - Base de données : `ecommerce`
 
@@ -47,7 +47,7 @@ sudo apt install postgresql-client-16
 ### Commandes utiles
 |commande|résultat|
 |--------|--------|
-|`\dt`|Liste les tables|
+|`\dt`|Liste les tabpostgresles|
 |`\d produits`|Structure de la table "produits"|
 |`SELECT * FROM produits;`|Affiche le contenu de la table "produits"|
 
