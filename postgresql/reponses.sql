@@ -93,4 +93,14 @@
 -- Question 10 : 
 -- SELECT * FROM produits WHERE stock%5=0;
 
+-- # Partie 2 #
+-- Question 1 :
+-- SELECT categorie, ROUND(AVG(prix),2) as prix_moyen FROM produits GROUP BY categorie HAVING AVG(prix) > 800;
+
+-- Question 2 :
+-- SELECT commande_id, SUM(quantite*prix_unitaire) FROM lignes_commandes GROUP BY commande_id HAVING SUM(quantite*prix_unitaire) > 1000;
+
+-- Question 3 :
+-- SELECT famille, SUM(stock) FROM produits GROUP BY famille HAVING SUM(stock)<50;
+
 
