@@ -45,5 +45,26 @@ ORDER BY "Montant total" DESC ;
 --Afficher les commandes passées en 2025 et leur nombre.
 
 --Calculer le prix minimum, maximum et moyen des produits commandés par catégorie.
+SELECT p.categorie, MIN(prix_unitaire), MAX(prix_unitaire), AVG(prix_unitaire) 
+FROM produits p INNER JOIN lignes_commandes lc ON p.produit_id = lc.produit_id
+GROUP BY categorie;
+
+--Calculer le prix minimum, maximum et moyen des produits commandés par famille.
+SELECT p.famille, MIN(prix_unitaire), MAX(prix_unitaire), AVG(prix_unitaire) 
+FROM produits p INNER JOIN lignes_commandes lc ON p.produit_id = lc.produit_id
+GROUP BY famille;
 
 --Afficher les produits dont le stock est un multiple de 5 (utiliser %).
+SELECT
+    produit_id,
+    stock
+FROM
+    produits
+GROUP BY
+    produit_id
+HAVING
+    stock % 5 = 0;
+
+--Afficher les catégories de produits dont le prix moyen est supérieur à 800
+--Afficher les commandes dont le montant total (somme des quantités × prix unitaire) dépasse 1000.
+--Afficher les familles de produits dont le stock cumulé est inférieur à 50.
