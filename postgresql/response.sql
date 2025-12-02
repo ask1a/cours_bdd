@@ -28,3 +28,11 @@
 --SELECT EXTRACT(YEAR FROM date_commande) AS annee,COUNT(*) AS nb_commandes FROM commandes GROUP BY annee HAVING EXTRACT(YEAR FROM date_commande) = 2025;
 --SELECT p.categorie,MIN(lc.prix_unitaire),MAX(lc.prix_unitaire),AVG(lc.prix_unitaire) FROM produits p INNER JOIN lignes_commandes lc ON p.produit_id = lc.produit_id  GROUP BY p.categorie ORDER BY montant_total DESC;
 --SELECT * from produits WHERE stock%5=0;
+--
+--SELECT categorie,AVG(prix) AS prix_moyen FROM produits GROUP BY categorie HAVING AVG(prix) > 800;
+--SELECT c.commande_id,SUM(lc.quantite)*lc.prix_unitaire AS montant_total FROM lignes_commandes lc INNER JOIN commandes c ON lc.commande_id = c.commande_id GROUP BY c.commande_id,lc.prix_unitaire HAVING SUM(quantite)*prix_unitaire > 1000 ORDER BY SUM(lc.quantite)*lc.prix_unitaire DESC;
+--SELECT famille,SUM(stock) FROM produits GROUP BY famille HAVING SUM(stock) < 50;
+--[4]
+
+
+
