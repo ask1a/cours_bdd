@@ -32,7 +32,12 @@ SELECT produit_id, nom, prix,
 FROM produits;
 
 --Afficher les clients avec une colonne indiquant "nouveau" si inscrits après 2024, sinon "ancien".
-
+select 
+from clients
+inner join commandes
+inner join lignes_commandes
+inner join produits
+where (c.client_id)
 --Afficher les produits commandés et ajouter une colonne "stock critique" si le stock est inférieur à 5.
 
 --Utiliser une sous‑requête pour afficher le produit le plus cher commandé par chaque client.
