@@ -233,3 +233,38 @@ FROM lignes_commandes lc
 INNER JOIN produits p ON lc.produit_id = p.produit_id
 GROUP BY p.nom
 HAVING SUM(lc.quantite) % 5 = 0;
+
+-- HAVING 
+
+-- TEST 
+SELECT
+    client_id,
+    COUNT(client_id) AS nombre_commandes
+FROM
+    Commandes
+GROUP BY
+    client_id
+HAVING
+    COUNT(client_id) < 3;
+
+
+--Exercices pratiques
+
+--Afficher les catégories de produits dont le prix moyen est supérieur à 800
+SELECT p.categorie, AVG(p.prix) AS prix_moyen
+FROM produits p
+GROUP BY p.categorie
+HAVING AVG(p.prix) > 800;
+
+--Afficher les commandes dont le montant total (somme des quantités × prix unitaire) dépasse 1000.
+SELECT commande_id, sum(quantite * prix_unitaire) AS montant_total
+FROM lignes_commandes
+group by commande_id
+HAVING sum(quantite * prix_unitaire) > 1000;
+
+--Afficher les familles de produits dont le stock cumulé est inférieur à 50.
+SELECT p.nom, SUM(lc.quantite) AS nb_stock
+FROM lignes_commandes lc
+INNER JOIN produits p ON lc.produit_id = p.produit_id
+GROUP BY p.nom
+HAVING SUM(lc.quantite) < 50;
