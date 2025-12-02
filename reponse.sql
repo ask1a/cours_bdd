@@ -93,7 +93,7 @@ CROSS JOIN produits p;
 
 -----------------------------
 -- Partie Agrégation 
-
+/*
 -- 1/
 SELECT COUNT(*) as Nb_produit FROM produits;
 
@@ -150,3 +150,76 @@ GROUP BY p.categorie;
 -- 10/
 SELECT nom, stock FROM produits
 WHERE stock%5=0;
+
+*/
+---- Utilisation HAVING
+
+/*
+-- 1/
+SELECT categorie, AVG(prix) AS prix_moyen
+FROM produits
+GROUP BY categorie
+HAVING AVG(prix) > 800;
+
+-- 2/
+SELECT commande_id, SUM(quantite * prix_unitaire) as Montant_Total
+FROM lignes_commandes
+GROUP BY commande_id
+HAVING SUM(quantite * prix_unitaire) > 1000;
+
+-- 3/
+SELECT famille, SUM(stock) as Stock_cumulé
+FROM produits
+GROUP BY famille
+HAVING SUM(stock) < 50
+ORDER BY SUM(stock) DESC;
+*/
+
+--- Partie 4 : sous-requêtes
+/*
+-- 1/
+SELECT nom, prix
+FROM produits 
+WHERE prix > (SELECT AVG(prix) FROM produits);
+
+-- 2
+SELECT client_id, Nb_commande
+FROM (SELECT client_id, COUNT(commande_id) as Nb_commande FROM commandes GROUP BY client_id) as table_commande_bis 
+WHERE Nb_commande >= 2 ;
+
+-- 3
+SELECT commande_id, date_commande, 
+CASE 
+    WHEN date_commande >= '2025-01-01' THEN 'Commande récente'
+    ELSE 'Commande ancienne'   
+END AS Anciennte_commande
+FROM commandes;
+
+-- 4/
+SELECT nom,
+       prix,
+       CASE
+           WHEN prix < 200 THEN 'Bon marché'
+           WHEN prix BETWEEN 200 AND 1000 THEN 'Moyen'
+           ELSE 'Cher'
+       END AS categorie_prix
+FROM produits;
+
+-- 5/
+SELECT client_id, date_inscription,
+CASE   
+    WHEN EXTRACT(YEAR from date_inscription) >= '2024' THEN 'Nouveu'
+    ELSE 'Ancien'
+END AS Statu_client
+FROM clients;
+
+-- 6/
+SELECT DISTINCT p.produit_id, nom, stock,
+CASE   
+    WHEN stock < 5 THEN 'stock critique'
+    ELSE 'Stock bon'
+END AS Stock_critique
+FROM produits p
+INNER JOIN lignes_commandes lc
+ON p.produit_id = lc.produit_id;
+*/
