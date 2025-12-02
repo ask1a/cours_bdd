@@ -223,3 +223,5 @@ FROM produits p
 INNER JOIN lignes_commandes lc
 ON p.produit_id = lc.produit_id;
 */
+
+CREATE DATABASE bibliotheque;
