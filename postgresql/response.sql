@@ -33,6 +33,13 @@
 --SELECT c.commande_id,SUM(lc.quantite)*lc.prix_unitaire AS montant_total FROM lignes_commandes lc INNER JOIN commandes c ON lc.commande_id = c.commande_id GROUP BY c.commande_id,lc.prix_unitaire HAVING SUM(quantite)*prix_unitaire > 1000 ORDER BY SUM(lc.quantite)*lc.prix_unitaire DESC;
 --SELECT famille,SUM(stock) FROM produits GROUP BY famille HAVING SUM(stock) < 50;
 --[4]
+--SELECT nom,prix FROM produits WHERE prix > (SELECT AVG(prix) FROM produits);
+--SELECT client_id,comptage FROM(SELECT client_id, COUNT(*) AS comptage FROM commandes GROUP BY client_id) AS sub WHERE comptage >= 2;
+--SELECT date_commande, CASE WHEN date_commande > '2025-01-01' THEN 'récent' ELSE 'anciennes' END AS oui FROM commandes;
+--SELECT nom, prix,CASE WHEN prix < 200 THEN 'Bon marché' WHEN prix BETWEEN 200 AND 1000 THEN 'Moyen' ELSE 'Cher' END AS categorie_prix FROM produits;
+--SELECT nom, CASE WHEN date_inscription > '2024-01-01' THEN 'nouveau' ELSE 'ancien' END AS rencent FROM clients;
+--SELECT lc.commande_id,p.nom,p.stock,CASE WHEN p.stock > 5 THEN 'no soucis' ELSE 'STOCK CRITIQUE !' END AS stocked FROM produits p INNER JOIN lignes_commandes lc ON p.produit_id = lc.produit_id;
+SELECT c.nom,p.nom,p.prix FROM client c INNER JOIN commandes co ON c.client_id = co.client_id INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id INNER JOIN produits p ON lc.produit_id = p.produit_id WHERE (c.client,p.prix) IN (SELECT client_id,MAX(lc.prix_unitaire) as max_prix FROM commandes co INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id GROUP BY client_id)
 
 
 
