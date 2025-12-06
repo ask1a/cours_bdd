@@ -15,7 +15,7 @@ namespaces : qui isolent utilisateurs, réseau et processus.
 -> Lorsqu’un container démarre, il lance un processus. Quand ce processus s’arrête, le container disparaît.
 
 Exemple sous Linux  
-Un container peut exécuter un entraînement de modèle de Machine Learning en :
+Un container peut, par exemple, exécuter un entraînement de modèle de Machine Learning en :
  - attribuant des ressources spécifiques,
  - isolant le processus du système de fichiers hôte,
  - lui donnant son propre adressage réseau.
@@ -62,3 +62,10 @@ DockerHub : registre public par défaut.
 Trusted registries : registres privés, souvent utilisés en entreprise.
 
 -> Le fonctionnement des containers est assuré par le système Linux de la machine hôte (ou par une VM Linux si l’on travaille sous Windows).
+
+
+## À retenir
+Les conteneurs permettent d’isoler une application avec ses dépendances en s’appuyant directement sur le système de la machine hôte, ce qui les rend plus légers et rapides que les machines virtuelles.  
+Les images Docker, construites en couches, assurent portabilité et reproductibilité.  Docker, a popularisé la containerisation grâce à sa simplicité, son écosystème (DockerHub, Dockerfiles, support cloud) et sa large communauté.  
+Son fonctionnement repose sur une architecture client‑serveur (docker‑cli et daemon) et sur des registries publics ou privés pour stocker et partager les images.
+
