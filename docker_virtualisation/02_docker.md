@@ -73,10 +73,10 @@ Image : modèle immuable servant de base pour créer des containers, construit e
 Volume : espace de stockage persistant permettant de conserver et partager des données entre containers, indépendamment de leur cycle de vie.
 
 ## Schéma de création d'un conteneur de zéro
-<img src="images/docker_build_run.png" alt="Buildrun" width="800" style="max-width:100%;height:auto;"> 
+<img src="image/docker_build_run.png" alt="Buildrun" width="800" style="max-width:100%;height:auto;"> 
 
 ## Schéma d'illustration d'utilisation d'un volume
-<img src="images/docker_volume.webp" alt="Volume" width="800" style="max-width:100%;height:auto;"> 
+<img src="image/docker_volume.webp" alt="Volume" width="800" style="max-width:100%;height:auto;"> 
 
 ## À retenir
 Les conteneurs permettent d’isoler une application avec ses dépendances en s’appuyant directement sur le système de la machine hôte, ce qui les rend plus légers et rapides que les machines virtuelles.  
