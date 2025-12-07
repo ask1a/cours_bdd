@@ -161,4 +161,3 @@ Variables d’environnement
 Mode détaché
  - Lancez un container busybox en arrière-plan qui exécute sleep 30.
  - Vérifiez qu’il est actif avec docker container ls.
- - Arrêtez-le avant la fin avec docker container stop.
