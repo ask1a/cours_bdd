@@ -33,6 +33,27 @@ docker container run -it --name my_alpine \
   --mount type=volume,src=my_volume,dst=/home/my_folder \
   --rm alpine:latest sh
 ```
+### Décomposition de --mount type=volume,src=my_volume,dst=/home/my_folder
+#### type=volume: 
+Indique que la source est un volume Docker géré par le daemon. Les volumes sont stockés dans l’espace Docker (généralement sous /var/lib/docker/volumes) et sont indépendants du cycle de vie des containers.
+
+#### src=my_volume: 
+Spécifie le nom du volume à monter.  
+ - Volume nommé: my_volume doit exister (créé via docker volume create my_volume), ou Docker peut le créer automatiquement s’il est référencé et introuvable.  
+ - Volume anonyme: si src est omis avec type=volume, Docker crée un volume anonyme (peu pratique pour la gestion).
+
+#### dst=/home/my_folder: 
+Chemin cible dans le système de fichiers du container où le volume sera monté.  
+ - Écrasement du contenu: si le container a déjà des fichiers à cet emplacement, le montage masque le contenu au profit du volume monté tant que le container tourne.  
+ - Création du dossier: si le chemin n’existe pas, Docker le crée dans le container (selon l’image et les permissions).
+
+#### Équivalent fonctionnel:
+
+```Code
+-v my_volume:/home/my_folder
+```
+fait la même chose que `--mount type=volume,src=my_volume,dst=/home/my_folder`.
+
 
 À l’intérieur du container, créez un fichier :
 
