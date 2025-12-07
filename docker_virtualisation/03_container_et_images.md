@@ -28,7 +28,7 @@ docker container run -it alpine sh
 ```
 -> Vous êtes maintenant dans un shell sh à l’intérieur du container Alpine. Testez quelques commandes (ls, pwd, echo).
 
-Pour voir les containers actifs :
+Ouvrez un deuxième terminal et vérifiez les containers actifs :
 ```bash
 docker container ls
 ```
