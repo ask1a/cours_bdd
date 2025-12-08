@@ -9,6 +9,7 @@ Exemples mongosh
 ```js
 use demoDB
 db.etudiants.insertOne({ nom: "Roger", age: 51, interets: ["sport", "cuisine"] })
+
 db.etudiants.insertMany([
   { nom: "Bob", age: 22, interets: ["sport", "cinéma"] },
   { nom: "Claire", age: 24, interets: ["lecture", "dessin"] },
