@@ -93,7 +93,30 @@ db.etudiants.aggregate([
 ])
 ```
 
+Moyenne d’âge par intérêt, mais seulement pour les étudiants de moins de 25 ans:
+```js
+db.etudiants.aggregate([
+  { 
+    $match: { age: { $lt: 25 } }            // Étape 1 : filtrer les étudiants de moins de 25 ans
+  },
+  { 
+    $unwind: "$interets"                    // Étape 2 : éclater le tableau interets
+  },
+  { 
+    $group: { 
+      _id: "$interets", 
+      moyenneAge: { $avg: "$age" }          // Étape 3 : calculer la moyenne par intérêt
+    } 
+  }
+])
+```
+
+
 Toujours nommer les champs calculés (moyenneAge, sommeAge) pour rendre les résultats lisibles.
 
 Tester avec des petits ensembles de données avant d’appliquer sur des collections volumineuses.
 
+## 7. Exercice
+ - Calcule la moyenne d’âge des étudiants pour chaque intérêt.
+ - Compter combien d’étudiants ont chaque intérêt.
+ - Compter les étudiants de moins de 25 ans.
