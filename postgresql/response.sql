@@ -1,0 +1,46 @@
+--SELECT * FROM clients WHERE date_inscription BETWEEN '2025-01-01' AND '2025-12-31';
+--SELECT nom,email FROM clients WHERE nom LIKE'%e%' and email LIKE '%e%';
+--SELECT nom FROM clients WHERE email IS NULL;
+--SELECT nom FROM clients WHERE client_id BETWEEN 5 and 10;
+--SELECT * FROM clients WHERE nom NOT LIKE 'M%';
+--SELECT * FROM clients WHERE date_inscription BETWEEN '2023-01-01' AND '2023-12-31' AND nom LIKE '%ad%';
+--SELECT * FROM clients WHERE email IN ('alice@mail.com', 'bob@mail.com');
+--SELECT * FROM clients WHERE date_inscription BETWEEN '2024-01-01' AND '2024-03-31';
+--SELECT * FROM clients WHERE nom != 'Dupont';
+-- [2]
+---SELECT * FROM clients c INNER JOIN commandes o ON c.client_id = o.client_id WHERE c.nom = 'Bob Martin';
+--SELECT c.nom, c.email, co.commande_id,co.statut FROM clients c LEFT JOIN commandes co ON c.client_id = co.client_id;
+--SELECT  c.nom AS client, co.statut FROM commandes co INNER JOIN clients c ON co.client_id = c.client_id INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id INNER JOIN produits p ON lc.produit_id = p.produit_id;
+--SELECT DISTINCT c.nom AS client, p.nom AS produit FROM commandes co INNER JOIN clients c ON co.client_id = c.client_id INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id INNER JOIN produits p ON lc.produit_id = p.produit_id WHERE c.nom = 'Alice Dupont';
+--SELECT c.nom AS client, co.commande_id FROM commandes co  INNER JOIN clients c ON co.client_id = c.client_id  INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id  INNER JOIN produits p ON lc.produit_id = p.produit_id  WHERE co.commande_id is NULL;
+--SELECT c.nom AS client, p.nom as produit, lc.quantite as qte FROM commandes co  INNER JOIN clients c ON co.client_id = c.client_id  INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id  INNER JOIN produits p ON lc.produit_id = p.produit_id;
+--SELECT c.nom, p.nom FROM clients c CROSS JOIN produits p;
+--SELECT c.nom,COUNT(c.nom)  FROM commandes co  INNER JOIN clients c ON co.client_id = c.client_id  INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id  INNER JOIN produits p ON lc.produit_id = p.produit_id GROUP BY c.nom HAVING COUNT(c.nom) >2;
+--SELECT p.produit_id,COUNT(co.commande_id)  FROM commandes co  LEFT JOIN clients c ON co.client_id = c.client_id  LEFT JOIN lignes_commandes lc ON co.commande_id = lc.commande_id  LEFT JOIN produits p ON lc.produit_id = p.produit_id GROUP BY p.produit_id;
+--[3]
+--SELECT COUNT(*) FROM produits;
+--SELECT categorie,AVG(prix) FROM produits GROUP BY categorie;
+--SELECT commande_id, prix_unitaire * quantite AS total FROM lignes_commandes;
+--SELECT c.nom,COUNT(co.commande_id) AS total_commandes FROM clients c LEFT JOIN commandes co ON c.client_id = co.client_id GROUP BY c.nom ORDER BY total_commandes DESC LIMIT 1;
+--SELECT p.famille, SUM(p.stock) AS total_stock FROM produits p GROUP BY p.famille ORDER BY total_stock DESC ;
+--SELECT p.categorie, STDDEV(p.prix) AS ecart FROM produits p GROUP BY p.categorie ORDER BY ecart DESC ;
+--SELECT c.nom, SUM(lc.prix_unitaire * lc.quantite) AS montant_total FROM clients c INNER JOIN commandes co ON c.client_id = co.client_id INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id GROUP BY c.nom ORDER BY montant_total DESC;
+--SELECT EXTRACT(YEAR FROM date_commande) AS annee,COUNT(*) AS nb_commandes FROM commandes GROUP BY annee HAVING EXTRACT(YEAR FROM date_commande) = 2025;
+--SELECT p.categorie,MIN(lc.prix_unitaire),MAX(lc.prix_unitaire),AVG(lc.prix_unitaire) FROM produits p INNER JOIN lignes_commandes lc ON p.produit_id = lc.produit_id  GROUP BY p.categorie ORDER BY montant_total DESC;
+--SELECT * from produits WHERE stock%5=0;
+--
+--SELECT categorie,AVG(prix) AS prix_moyen FROM produits GROUP BY categorie HAVING AVG(prix) > 800;
+--SELECT c.commande_id,SUM(lc.quantite)*lc.prix_unitaire AS montant_total FROM lignes_commandes lc INNER JOIN commandes c ON lc.commande_id = c.commande_id GROUP BY c.commande_id,lc.prix_unitaire HAVING SUM(quantite)*prix_unitaire > 1000 ORDER BY SUM(lc.quantite)*lc.prix_unitaire DESC;
+--SELECT famille,SUM(stock) FROM produits GROUP BY famille HAVING SUM(stock) < 50;
+--[4] 
+--SELECT nom,prix FROM produits WHERE prix > (SELECT AVG(prix) FROM produits);
+--SELECT client_id,comptage FROM(SELECT client_id, COUNT(*) AS comptage FROM commandes GROUP BY client_id) AS sub WHERE comptage >= 2;
+--SELECT date_commande, CASE WHEN date_commande > '2025-01-01' THEN 'récent' ELSE 'anciennes' END AS oui FROM commandes;
+--SELECT nom, prix,CASE WHEN prix < 200 THEN 'Bon marché' WHEN prix BETWEEN 200 AND 1000 THEN 'Moyen' ELSE 'Cher' END AS categorie_prix FROM produits;
+--SELECT nom, CASE WHEN date_inscription > '2024-01-01' THEN 'nouveau' ELSE 'ancien' END AS rencent FROM clients;
+--SELECT lc.commande_id,p.nom,p.stock,CASE WHEN p.stock > 5 THEN 'no soucis' ELSE 'STOCK CRITIQUE !' END AS stocked FROM produits p INNER JOIN lignes_commandes lc ON p.produit_id = lc.produit_id;
+--SELECT c.nom,p.nom,p.prix FROM client c INNER JOIN commandes co ON c.client_id = co.client_id INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id INNER JOIN produits p ON lc.produit_id = p.produit_id WHERE (c.client,p.prix) IN (SELECT client_id,MAX(lc.prix_unitaire) as max_prix FROM commandes co INNER JOIN lignes_commandes lc ON co.commande_id = lc.commande_id GROUP BY client_id)
+
+
+
+
