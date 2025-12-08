@@ -155,3 +155,62 @@ FROM produits p
 
 -- ##### BDD #####
 CREATE DATABASE bibliotheque;
+
+
+CREATE TABLE auteurs (
+    auteur_id SERIAL PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL
+);
+
+-- Table Livre
+CREATE TABLE livre (
+    livre_id SERIAL PRIMARY KEY,
+    titre VARCHAR(255) NOT NULL,
+    annee_publication INT,
+    auteur_id INT REFERENCES auteurs(auteur_id)
+        ON DELETE SET NULL
+);
+
+CREATE TABLE etudiants (
+    etudiant_id SERIAL PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    cursus VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE cursus (
+    cursus_id SERIAL PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE emprunts (
+    emprunt_id SERIAL PRIMARY KEY,
+    etudiant_id INT REFERENCES etudiants(etudiant_id),
+    livre_id INT REFERENCES livre(livre_id),
+    date_emprunt DATE NOT NULL,
+    date_retour DATE
+);
+
+insert into auteurs (nom) values
+('Victor Hugo'),
+('J.K. Rowling'),
+('George Orwell');
+
+insert into livre (titre, annee_publication, auteur_id) values
+('Les Misérables', 1862, 1),
+('1984', 1949, 3),
+('Harry Potter à lécole des sorciers', 1997, 2);
+
+insert into etudiants (nom, cursus) values
+('Alice Dupont', 'Informatique'),
+('Bob Martin', 'Littérature'),
+('Clara Durand', 'Sciences');
+
+insert into emprunts (etudiant_id, livre_id, date_emprunt, date_retour) values
+(1, 1, '2025-01-10', '2025-01-20'),
+(2, 2, '2025-02-15', NULL),
+(3, 3, '2025-03-05', '2025-03-15');
+
+insert into cursus (nom) values
+('Informatique'),
+('Littérature'),
+('Sciences');
