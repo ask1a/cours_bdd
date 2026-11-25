@@ -1,0 +1,39 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 11 / 12
+        Pousser vers un dépôt distant
+=====================================================
+
+Jusqu'ici, tout ton travail est resté dans TON dépôt
+local. Pour le partager, l'équipe utilise un dépôt
+DISTANT, que chacun peut cloner.
+
+Dans un vrai projet, ce serait une adresse GitHub
+(https://github.com/...). Ici, le dépôt distant est un
+dépôt "nu" (bare) placé ailleurs sur la machine :
+    __DISTANT__
+Ça fonctionne exactement pareil, sans avoir besoin de token.
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Ton dépôt connaît-il des dépôts distants ?
+       git remote
+   (Rien ne s'affiche : aucun pour l'instant.)
+
+2. Ajoute le dépôt distant sous le nom habituel "origin" :
+       git remote add origin __DISTANT__
+       git remote -v
+
+3. Pousse ta branche principale :
+       git push -u origin __BRANCHE__
+   L'option -u mémorise le lien entre ta branche et celle
+   du dépôt distant : ensuite, "git push" et "git pull"
+   tout courts suffiront.
+
+4. Inspecte le dépôt distant :
+       git remote show origin
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 08_repo_distant.md)

@@ -1,0 +1,35 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 2 / 12
+              Se présenter à Git
+=====================================================
+
+  « Dans l'historique, on doit savoir qui a fait quoi.
+    Configure ton identité. » - Camille
+
+Git signe chaque commit avec un nom et un e-mail.
+Avec --global, ce réglage vaut pour TOUS tes projets.
+Sans --global, il ne vaut que pour le dépôt courant.
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Configure ton nom et ton e-mail, UNIQUEMENT pour ce
+   dépôt (donc SANS --global) :
+       git config user.name "Prénom Nom"
+       git config user.email "prenom.nom@exemple.fr"
+
+2. Vérifie :
+       git config user.name
+       git config user.email
+
+3. Où ce réglage est-il rangé ? Dans le dépôt lui-même :
+       cat .git/config
+
+4. Compare avec ta configuration globale :
+       git config --global user.name
+   (Dans Codespaces, GitHub l'a souvent déjà remplie.)
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 02_parametrage_et_initialisation.md)

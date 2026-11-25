@@ -1,0 +1,34 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 6 / 12
+          Supprimer et renommer
+=====================================================
+
+  « Finalement, on retire le gâteau du carnet. Et
+    renomme crepes.txt en crepes_sucrees.txt : on
+    ajoutera les crêpes salées plus tard. » - Camille
+
+ATTENTION : un simple "rm" ou "mv" change les fichiers
+sur ton disque, mais Git ne le note pas dans l'index.
+Les versions "git rm" et "git mv" font les deux à la fois.
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Supprime le gâteau ET indique-le à Git :
+       git rm gateau.txt
+
+2. Renomme les crêpes en conservant leur suivi :
+       git mv crepes.txt crepes_sucrees.txt
+
+3. Regarde ce que Git a compris :
+       git status
+   Tu dois voir "deleted: gateau.txt" et
+   "renamed: crepes.txt -> crepes_sucrees.txt".
+
+4. Valide :
+       git commit -m "Retrait du gâteau, renommage des crêpes"
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 05_modifier_des_fichiers.md, parties 2 et 5)

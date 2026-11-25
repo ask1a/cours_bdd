@@ -1,0 +1,51 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 10 / 12
+            Résoudre un conflit
+=====================================================
+
+Camille a ajouté une recette de pizza (pizza.txt). Ensuite,
+deux personnes ont modifié la cuisson EN PARALLÈLE :
+  - Camille, sur __BRANCHE__ : 10 minutes à 250 °C ;
+  - Alex, sur la branche "alex" : 15 minutes à 220 °C.
+Regarde comme les deux historiques divergent :
+    git log --oneline --graph --all
+
+Les deux ont modifié la MÊME ligne du MÊME fichier :
+Git ne peut pas deviner qui a raison. C'est un CONFLIT,
+et c'est à toi de trancher.
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Depuis __BRANCHE__, fusionne la branche d'Alex :
+       git merge alex
+   Git annonce : CONFLICT (content): Merge conflict in pizza.txt
+
+2. Regarde l'état du dépôt :
+       git status          ("both modified: pizza.txt")
+       cat pizza.txt
+   Tu vois quelque chose comme :
+       Pizza
+       <<<<<<< HEAD
+       Cuisson : 10 minutes à 250 °C.
+       =======
+       Cuisson : 15 minutes à 220 °C.
+       >>>>>>> alex
+
+3. Ouvre pizza.txt dans un éditeur :
+       vim pizza.txt       (ou : code pizza.txt dans Codespaces)
+   Garde la version de ton choix (ou écris un compromis)
+   et SUPPRIME les trois lignes de marqueurs
+   (<<<<<<<, ======= et >>>>>>>).
+
+4. Indique à Git que le conflit est résolu, puis valide :
+       git add pizza.txt
+       git commit -m "Fusion de la branche alex"
+
+5. Regarde ton commit de fusion (il a deux parents) :
+       git log --oneline --graph --all
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 07_fusion.md, cas de l'historique divergent)

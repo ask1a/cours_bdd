@@ -1,0 +1,40 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - EXERCICE TERMINÉ
+=====================================================
+
+  « Belle première journée ! Tu sais maintenant
+    travailler avec Git comme le reste de l'équipe. »
+                                              - Camille
+
+Tu as utilisé :
+  git init / git config              -> créer et configurer un dépôt
+  git status / git add / git commit  -> le cycle de base
+  git reset HEAD                     -> retirer un fichier de l'index
+  .gitignore                         -> ignorer des fichiers
+  git rm / git mv / git rm --cached  -> supprimer, renommer, ne plus suivre
+  git branch / git checkout          -> créer des branches et s'y déplacer
+  git merge                          -> fusionner (fast-forward et conflit)
+  git remote / git push              -> envoyer vers un dépôt distant
+  git fetch / git pull               -> récupérer le travail des autres
+
+Pour revoir tout ce qui s'est passé aujourd'hui :
+    git log --oneline --graph --all
+
+-----------------------------------------------------
+DÉFI BONUS (sans vérification)
+-----------------------------------------------------
+Essaie le rebase (cours : 07_fusion.md) :
+    git checkout -b salades
+    echo "Salade niçoise" > salade.txt
+    git add salade.txt
+    git commit -m "Ajout de la salade"
+    git checkout __BRANCHE__
+    echo "Recettes testées par l'équipe." >> README.md
+    git commit -am "Mise à jour du README"
+    git checkout salades
+    git rebase __BRANCHE__
+    git log --oneline --graph --all
+Le commit de "salades" a été rejoué APRÈS celui du
+README : l'historique reste linéaire, sans commit de fusion.
+
+Pour refaire l'exercice : bash reinitialiser.sh (dans git_github/exercice/)

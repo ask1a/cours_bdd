@@ -1,0 +1,42 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 7 / 12
+          Un secret dans le dépôt
+=====================================================
+
+Sam, un collègue, vient de faire un commit dans le dépôt.
+Regarde ce qu'il a ajouté :
+    git log
+    cat config_secrete.txt
+
+Ce fichier contient une clé d'API. Un mot de passe, une
+clé d'API ou un token GitHub ne doit JAMAIS être
+versionné. Mais Sam a quand même besoin de garder le
+fichier sur son disque pour que l'outil fonctionne.
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Arrête de suivre le fichier, sans le supprimer :
+       git rm --cached config_secrete.txt
+
+2. Empêche qu'il soit réindexé par erreur
+   (par exemple avec un "git add ." un peu rapide) :
+       echo "config_secrete.txt" >> .gitignore
+
+3. Valide les deux changements :
+       git add .gitignore
+       git commit -m "Ne plus versionner la configuration secrète"
+
+4. Vérifie que le fichier est toujours là :
+       ls
+
+À SAVOIR : la clé reste lisible dans les ANCIENS commits
+(essaie : git show HEAD~1:config_secrete.txt).
+Un secret qui a été poussé en ligne doit donc être
+considéré comme compromis : on le révoque et on en
+génère un nouveau (par exemple un nouveau token GitHub).
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 05_modifier_des_fichiers.md, partie 2)

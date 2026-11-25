@@ -1,0 +1,37 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 12 / 12
+       Récupérer le travail des autres
+=====================================================
+
+Noa, une autre membre de l'équipe, a cloné le dépôt
+distant, y a ajouté une recette de tarte et l'a poussée.
+Ton dépôt local, lui, n'est au courant de rien :
+    ls
+    git log --oneline
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Récupère les nouveautés du dépôt distant SANS les fusionner :
+       git fetch
+
+2. Compare :
+       git status
+   "Your branch is behind 'origin/__BRANCHE__' by 1 commit"
+       git log --oneline --all
+   Le commit de Noa est visible sur origin/__BRANCHE__...
+       ls
+   ...mais tarte.txt n'est pas encore dans ton dossier.
+
+3. Intègre le travail de Noa dans ta branche :
+       git pull
+   (Après un fetch, "git merge origin/__BRANCHE__" ferait
+    la même chose. git pull = git fetch + git merge.)
+
+4. Vérifie :
+       cat tarte.txt
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 08_repo_distant.md)

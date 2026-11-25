@@ -1,0 +1,43 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 8 / 12
+          Travailler sur une branche
+=====================================================
+
+  « Tu veux proposer une recette de soupe ? Fais-le sur
+    une branche à part : la branche principale
+    (__BRANCHE__) doit toujours rester propre. » - Camille
+
+Une branche n'est qu'un pointeur vers un commit.
+HEAD indique la branche sur laquelle tu te trouves.
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Crée une branche "nouvelle-recette" et regarde la liste :
+       git branch nouvelle-recette
+       git branch
+   L'étoile (*) montre où est HEAD : toujours sur
+   __BRANCHE__ ! git branch ne fait que CRÉER la branche.
+
+2. Déplace-toi sur la nouvelle branche :
+       git checkout nouvelle-recette
+   (Astuce : "git checkout -b nouvelle-recette" fait les
+    étapes 1 et 2 en une seule commande.)
+
+3. Écris la recette et valide-la :
+       echo "Soupe de légumes" > soupe.txt
+       git add soupe.txt
+       git commit -m "Ajout de la soupe"
+
+4. Observe l'effet des branches :
+       git checkout __BRANCHE__
+       ls                      (soupe.txt a disparu !)
+       git checkout nouvelle-recette
+       ls                      (il est revenu)
+
+Ne fusionne pas encore : ce sera pour l'étape suivante.
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 06_branches.md)

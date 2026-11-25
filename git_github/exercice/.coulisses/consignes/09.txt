@@ -1,0 +1,32 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 9 / 12
+             Fusionner une branche
+=====================================================
+
+  « La soupe est validée, tu peux l'intégrer à la
+    branche principale. » - Camille
+
+Comme __BRANCHE__ n'a pas bougé depuis la création de
+nouvelle-recette, Git va simplement avancer le pointeur
+de __BRANCHE__ : c'est une "avance rapide" (fast-forward).
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Retourne sur la branche principale :
+       git checkout __BRANCHE__
+
+2. Fusionne ta branche :
+       git merge nouvelle-recette
+   Repère le mot "Fast-forward" dans la réponse de Git.
+
+3. Regarde l'historique :
+       git log --oneline --graph --all
+
+4. La branche a rempli son rôle, supprime-la :
+       git branch -d nouvelle-recette
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 07_fusion.md)

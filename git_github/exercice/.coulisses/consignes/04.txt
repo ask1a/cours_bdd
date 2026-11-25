@@ -1,0 +1,38 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 4 / 12
+                 L'index
+=====================================================
+
+Camille a ajouté trois fichiers et, pour aller vite,
+elle les a tous indexés d'un coup :
+    ls
+    git status
+
+  « Oups, brouillon.txt n'aurait pas dû partir avec !
+    Ce sont mes notes personnelles. Tu peux le retirer
+    avant de valider ? » - Camille
+
+L'index (staging area), c'est la liste de ce qui partira
+dans le PROCHAIN commit. On peut y ajouter des fichiers,
+mais aussi en retirer avant de valider.
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Retire brouillon.txt de l'index, SANS supprimer le fichier :
+       git reset HEAD brouillon.txt
+   (Les versions récentes de Git proposent aussi
+    "git restore --staged brouillon.txt" : même effet.)
+
+2. Vérifie :
+       git status
+   crepes.txt et gateau.txt sont toujours prêts à être
+   validés ; brouillon.txt est redevenu "Untracked".
+
+3. Valide uniquement les recettes :
+       git commit -m "Ajout des premières recettes"
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 05_modifier_des_fichiers.md, partie 3)

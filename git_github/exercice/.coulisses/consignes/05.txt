@@ -1,0 +1,42 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 5 / 12
+            Ignorer des fichiers
+=====================================================
+
+L'outil d'export du carnet a généré des fichiers de log,
+et le brouillon de Camille est toujours là :
+    ls
+    git status
+
+  « Ces fichiers ne doivent jamais être versionnés,
+    mais je ne veux plus les voir dans git status. »
+                                              - Camille
+
+Dans un vrai projet, on ignore de la même manière les
+fichiers temporaires, les mots de passe, les dossiers
+générés (node_modules/, venv/...).
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Crée un fichier .gitignore qui ignore tous les
+   fichiers .log ainsi que brouillon.txt :
+       echo "*.log" > .gitignore
+       echo "brouillon.txt" >> .gitignore
+   (">" crée ou écrase le fichier, ">>" ajoute à la fin.)
+
+2. Regarde :
+       cat .gitignore
+       git status
+   Seul .gitignore apparaît encore : les logs et le
+   brouillon sont devenus invisibles pour Git.
+
+3. Le .gitignore, lui, DOIT être versionné : il servira
+   à toutes les personnes qui travaillent sur le projet.
+       git add .gitignore
+       git commit -m "Ajout du .gitignore"
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 05_modifier_des_fichiers.md, partie 4)

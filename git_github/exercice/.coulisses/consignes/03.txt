@@ -1,0 +1,38 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 3 / 12
+               Premier commit
+=====================================================
+
+  « Tout projet commence par un README qui explique
+    de quoi il s'agit. » - Camille
+
+Rappel du cycle de Git :
+    modifié  --git add-->  indexé  --git commit-->  validé
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Crée un fichier README.md :
+       echo "# Carnet de recettes de l'équipe" > README.md
+
+2. Regarde son état :
+       git status
+   Il est "Untracked" : Git le voit, mais ne le suit pas.
+
+3. Indexe-le (prépare-le pour le prochain commit) :
+       git add README.md
+       git status
+   Il est maintenant dans "Changes to be committed".
+
+4. Valide-le (crée l'instantané) :
+       git commit -m "Ajout du README"
+
+5. Consulte l'historique :
+       git log
+   Tu y vois ton nom, la date, le message et
+   l'identifiant unique du commit.
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 03_fonctionnement.md, 04_creer_depot_git.md)

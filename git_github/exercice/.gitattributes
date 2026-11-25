@@ -1,0 +1,3 @@
+# Les scripts et les consignes doivent garder des fins de ligne Unix (LF),
+# sinon Bash refuse d'exécuter les scripts.
+* text eol=lf

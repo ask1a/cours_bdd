@@ -1,0 +1,42 @@
+=====================================================
+   PREMIER JOUR DANS L'ÉQUIPE - ÉTAPE 1 / 12
+             Créer le dépôt
+=====================================================
+
+Tu rejoins une petite équipe qui rédige un carnet de
+recettes partagé. Camille, la responsable du projet,
+t'accueille :
+
+  « Le projet démarre tout juste : ce dossier n'est
+    même pas encore versionné. Tu peux t'en charger ? »
+
+Vérifie que ce n'est pas encore un dépôt Git :
+    git status
+(Git doit répondre "fatal: not a git repository".)
+
+-----------------------------------------------------
+À FAIRE
+-----------------------------------------------------
+1. Transforme ce dossier en dépôt Git :
+       git init
+
+2. Observe ce qui a changé :
+       ls -a
+       git status
+
+   Un dossier caché .git est apparu : c'est la base de
+   données du dépôt. Ne le modifie jamais à la main !
+
+   Git affiche aussi les fichiers de l'exercice
+   (consignes, verifier.sh...) comme "Untracked" (non
+   suivis). N'y touche pas : ils seront cachés à Git
+   dès que l'étape sera validée.
+
+3. Repère le nom de la branche dans git status
+   ("On branch master" ou "On branch main") : ce sera
+   ta branche principale.
+
+Quand c'est fait :
+    bash verifier.sh
+
+(Cours : 03_fonctionnement.md, 04_creer_depot_git.md)
